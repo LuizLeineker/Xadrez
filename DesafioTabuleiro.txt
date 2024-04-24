@@ -1,0 +1,26 @@
+PASSO 01
+Criar uma função tabuleiro(), que receba por parâmetro "int largura" e "int altura" e imprima o tabuleiro:
+[.][.][.][.][.]
+[.][.][.][.][.]
+[.][.][.][.][.]
+[.][.][.][.][.]
+[.][.][.][.][.]
+
+PASSO 02
+Crie uma classe Personagem que tenha três variáveis "int posX", "int posY" e "String desenho". Com essas variáveis privadas, crie o get e set de cada uma e um construtor que receba todos eles por parâmetro. Em seguida, crie um objeto desta classe na main em uma posição específica e tente adicionar ele no tabuleiro.
+
+PASSO 03
+Uma vez que tudo funcionou com um personagem tente atualizar o código para que receba mais personagens.
+
+PASSO 04
+Agora crie mais duas classes com os nomes de "Inimigo" e de "Player" e faça com que haja herança delas para a classe de Personagem.
+Quando conseguir, tente adicionar objetos das duas novas classes no tabuleiro.
+
+PASSO 05
+Faça com que cada classe seja impressa com uma cor diferente.
+
+PASSO 06
+Construa uma lógica simples para mover um dos personagens.
+
+PASSO 07
+Xadrez

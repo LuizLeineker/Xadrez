@@ -5,78 +5,43 @@ import java.util.Scanner;
 
 public class Main {
 
-
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RED = "\u001B[31m";
-
-    public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_RESET =  "\u001B[0m";
 
     public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
 
-    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-
-    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
-
-    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
-
-    /* if(posX[0] - 1 == i && posY[0] - 1 == j)//
-            System.out.print("[ " + ANSI_RED +  imagem[0] + ANSI_RESET + " ]" );
-
-                else if(posX[1] - 1 == i && posY[1] - 1 == j)
-            System.out.print("[ " + ANSI_GREEN +  imagem[1] + ANSI_RESET + " ]" );
-             else
-                    System.out.printf("[ . ]");
 
 
-     */
-    static void tabuleiro(int linhas, int colunas, List<Personagem> pers){
+    static void tabuleiro(int linhas, int colunas, List<Xadrez> pers){
         boolean personagem;
         int color = 0;
         int colorx = 0;
-        int colory = 0;
         int aux = 0;
-        System.out.printf("\n--~--~--~--~--~--~--~--~--~--~--~--\n");
+        System.out.printf("\n--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n");
 ;
         for (int i = 0; i < linhas; i++) {
+            System.out.printf("%d ", i + 1);
             for (int j = 0; j < colunas; j++) {
                 personagem = false;
                 for(int k = 0; k < pers.size(); k++){
-                        if(pers.get(k).getPosX() - 1 == i && pers.get(k).getPosY() - 1== j){
-                            if(aux < 16){
+                        if(pers.get(k).getPosY() - 1 == i && pers.get(k).getPosX() - 1== j){
+
                                 if (colorx % 2 == 0){
                                     if (color % 2 == 0) {
-                                        System.out.print(ANSI_BLACK_BACKGROUND + "[ " + ANSI_CYAN + pers.get(k).getDesenho() + ANSI_RESET + ANSI_BLACK_BACKGROUND + " ]" + ANSI_RESET);
+                                        System.out.print(ANSI_BLACK_BACKGROUND + "[ " + pers.get(k).toString() + ANSI_BLACK_BACKGROUND + " ]" + ANSI_RESET);
                                     } else {
-                                        System.out.print("[ " + ANSI_RED + pers.get(k).getDesenho() + ANSI_RESET + " ]");
+                                        System.out.print("[ "+ pers.get(k).toString() + " ]");
                                     }
                                 }
                                      else if(color % 2 == 0){
-                                     System.out.print("[ " + ANSI_RED + pers.get(k).getDesenho() + ANSI_RESET + " ]");
+                                        System.out.print("[ "+ pers.get(k).toString() + " ]");
                                      }
                                      else
-                                        System.out.print(ANSI_BLACK_BACKGROUND + "[ " + ANSI_CYAN + pers.get(k).getDesenho() + ANSI_RESET + ANSI_BLACK_BACKGROUND + " ]" + ANSI_RESET);
+                                        System.out.print(ANSI_BLACK_BACKGROUND + "[ " + pers.get(k).toString() + ANSI_BLACK_BACKGROUND + " ]" + ANSI_RESET);
 
 
-                            }
 
 
-                            else{
-                                if (colorx % 2 == 0){
-                                    if (color % 2 == 0) {
-                                        System.out.print(ANSI_BLACK_BACKGROUND + "[ " + ANSI_RED + pers.get(k).getDesenho() + ANSI_RESET + ANSI_BLACK_BACKGROUND + " ]" + ANSI_RESET);
-                                    } else {
-                                        System.out.print("[ " + ANSI_RED + pers.get(k).getDesenho() + ANSI_RESET + " ]");
-                                    }
-                                }
-                                else if(color % 2 == 0){
-                                    System.out.print("[ " + ANSI_RED + pers.get(k).getDesenho() + ANSI_RESET + " ]");
-                                }
-                                else
-                                    System.out.print(ANSI_BLACK_BACKGROUND + "[ " + ANSI_RED + pers.get(k).getDesenho() + ANSI_RESET + ANSI_BLACK_BACKGROUND + " ]" + ANSI_RESET);
 
-
-                            }
 
 
                             aux++;
@@ -87,82 +52,84 @@ public class Main {
                 if (!personagem){
                     if(colorx % 2 == 0) {
                         if (color % 2 == 0) {
-                            System.out.print(ANSI_BLACK_BACKGROUND + "[ . ]" + ANSI_RESET);
+                            System.out.print(ANSI_BLACK_BACKGROUND + "[ ሞ ]" + ANSI_RESET);
                         } else {
-                            System.out.print("[ . ]");
+                            System.out.print("[ ሞ ]");
                         }
                     } else if (color % 2 == 0) {
-                        System.out.print("[ . ]");
+                        System.out.print("[ ሞ ]");
                     } else {
-                        System.out.print(ANSI_BLACK_BACKGROUND + "[ . ]" + ANSI_RESET);
+                        System.out.print(ANSI_BLACK_BACKGROUND + "[ ሞ ]" + ANSI_RESET);
                     }
                 }
                 color++;
             }
+
             colorx++;
             System.out.printf("\n");
         }
 
-        System.out.printf("--~--~--~--~--~--~--~--~--~--~--~--\n");
-        System.out.printf("    [W]\n");
-        System.out.printf("[A] [S] [D]\n");
-        System.out.printf("[5] - Sair do Menu\n");
+
+            System.out.printf("    %d     %d    %d     %d     %d    %d     %d    %d  ", 1, 2, 3, 4, 5, 6, 7, 8);
+
+        System.out.printf("\n--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n");
+        System.out.printf("[1] - Play\n");
+        System.out.printf("[2] - Exit\n");
 
     }
 
 
 
     public static void main(String[] args){
-            List<Personagem> personagens = new ArrayList<Personagem>();
+            List<Xadrez> personagens = new ArrayList<Xadrez>();
+            List<Cyan>  inimigo = new ArrayList<Cyan>();
             Scanner leitor = new Scanner(System.in);
-            int [] pos1 = new int[4];
-            int [] pos2 = new int[4];
-            String [] simbolo = new String[4];
-            String opcao;
-            int aux = 0;
+            int opcao;
             int teste;
+            int pos1;
+            int pos2;
+            int controle = 0;
+            int turno = 0;
+            int aux;
 
-            //aux
-            personagens.add(new Personagem(4, 4, "."));
+            //peças cyan
+            personagens.add(new Cyan(1, 1, "♖", "Ciano"));
+            personagens.add(new Cyan(1, 2, "♞", "Ciano"));
+            personagens.add(new Cyan(1, 3, "♝", "Ciano"));
+            personagens.add(new Cyan(1, 4, "♔", "Ciano"));
+            personagens.add(new Cyan(1, 5, "♕", "Ciano"));
+            personagens.add(new Cyan(1, 6, "♝", "Ciano"));
+            personagens.add(new Cyan(1, 7, "♞", "Ciano"));
+            personagens.add(new Cyan(1, 8, "♖", "Ciano"));
 
-            //peças pretas
-            personagens.add(new Personagem(1, 1, "T"));
-            personagens.add(new Personagem(1, 2, "1"));
-            personagens.add(new Personagem(1, 3, "X"));
-            personagens.add(new Personagem(1, 4, "$"));
-            personagens.add(new Personagem(1, 5, "♚"));
-            personagens.add(new Personagem(1, 6, "X"));
-            personagens.add(new Personagem(1, 7, "1"));
-            personagens.add(new Personagem(1, 8, "T"));
-
-            personagens.add(new Personagem(2, 1, "i"));
-            personagens.add(new Personagem(2, 2, "i"));
-            personagens.add(new Personagem(2, 3, "i"));
-            personagens.add(new Personagem(2, 4, "i"));
-            personagens.add(new Personagem(2, 5, "i"));
-            personagens.add(new Personagem(2, 6, "i"));
-            personagens.add(new Personagem(2, 7, "i"));
-            personagens.add(new Personagem(2, 8, "i"));
+            personagens.add(new Cyan(2, 1, "♟", "Ciano"));
+            personagens.add(new Cyan(2, 2, "♟", "Ciano"));
+            personagens.add(new Cyan(2, 3, "♟", "Ciano"));
+            personagens.add(new Cyan(2, 4, "♟", "Ciano"));
+            personagens.add(new Cyan(2, 5, "♟", "Ciano"));
+            personagens.add(new Cyan(2, 6, "♟", "Ciano"));
+            personagens.add(new Cyan(2, 7, "♟", "Ciano"));
+            personagens.add(new Cyan(2, 8, "♟", "Ciano"));
 
 
-            //peças brancas
-            personagens.add(new Personagem(8, 1, "T"));
-            personagens.add(new Personagem(8, 2, "1"));
-            personagens.add(new Personagem(8, 3, "X"));
-            personagens.add(new Personagem(8, 5, "$"));
-            personagens.add(new Personagem(8, 4, "*"));
-            personagens.add(new Personagem(8, 6, "X"));
-            personagens.add(new Personagem(8, 8, "T"));
-            personagens.add(new Personagem(8, 7, "1"));
+            //peças white
+            personagens.add(new Yellow(8, 1, "♜", "Amarelo"));
+            personagens.add(new Yellow(8, 2, "♞", "Amarelo"));
+            personagens.add(new Yellow(8, 3, "♝", "Amarelo"));
+            personagens.add(new Yellow(8, 5, "♚", "Amarelo"));
+            personagens.add(new Yellow(8, 4, "♛", "Amarelo"));
+            personagens.add(new Yellow(8, 6, "♝", "Amarelo"));
+            personagens.add(new Yellow(8, 7, "♞", "Amarelo"));
+            personagens.add(new Yellow(8, 8, "♜", "Amarelo"));
 
-            personagens.add(new Personagem(7, 1, "I"));
-            personagens.add(new Personagem(7, 2, "i"));
-            personagens.add(new Personagem(7, 3, "i"));
-            personagens.add(new Personagem(7, 4, "i"));
-            personagens.add(new Personagem(7, 5, "i"));
-            personagens.add(new Personagem(7, 6, "i"));
-            personagens.add(new Personagem(7, 7, "i"));
-            personagens.add(new Personagem(7, 8, "i"));
+            personagens.add(new Yellow(7, 1, "♟", "Amarelo"));
+            personagens.add(new Yellow(7, 2, "♟", "Amarelo"));
+            personagens.add(new Yellow(7, 3, "♟", "Amarelo"));
+            personagens.add(new Yellow(7, 4, "♟", "Amarelo"));
+            personagens.add(new Yellow(7, 5, "♟", "Amarelo"));
+            personagens.add(new Yellow(7, 6, "♟", "Amarelo"));
+            personagens.add(new Yellow(7, 7, "♟", "Amarelo"));
+            personagens.add(new Yellow(7, 8, "♟", "Amarelo"));
 
 
             /*
@@ -180,26 +147,47 @@ public class Main {
 
 
 
-                System.out.printf("--~--~--~--~--~--~--~--~--~--~--~--\n");
-                System.out.print( "♔ ♕ ♖ ♗ ♘ ♙  black: ♚ ♛  ♜  ♝  ♞ ♟");
-                System.out.print( "\n Informe um caracter de acordo com as opçoes:");
-                opcao = leitor.nextLine();
+                System.out.printf("--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n");
+                System.out.print( "   ♔ ♕ ♖ ♗ ♘ ♙ : ♚ ♛  ♜  ♝  ♞ ♟");
+                System.out.print( "\nInforme um numero de acordo com as opçoes: ");
+                opcao = Integer.parseInt(leitor.nextLine());
 
 
                 switch(opcao){
 
-                    case "W":
-                       teste = personagens.get(0).getPosX();
+                    case 1:
+                        System.out.printf("Informe a posição Y: ");
+                        pos1 = Integer.parseInt(leitor.nextLine());
 
-                       if(teste <= 1 || teste >= 8){
-                           System.out.println("ERRRO");
-                       }
-                       else
-                       personagens.get(0).setPosX(1);
+                        System.out.printf("Informe a posição X: ");
+                        pos2 = Integer.parseInt(leitor.nextLine());
 
+                        for(int i = 0; i < personagens.size() ; i++) {
+                            if(personagens.get(i).getPosY() == pos1 && personagens.get(i).getPosX() == pos2){
+                                System.out.printf("Escolha a posição Y para mexer a peça: ");
+                                pos1 = Integer.parseInt(leitor.nextLine());
+                                personagens.get(i).setPosY(pos1);
+
+                                
+
+                                System.out.printf("Escolha a posição X para mexer a peça: ");
+                                pos2 = Integer.parseInt(leitor.nextLine());
+                                personagens.get(i).setPosX(pos2);
+
+
+                                controle = 1;
+                                turno++;
+                            }
+                        }
+
+                        if(controle != 1){
+                            System.out.printf("Informe uma posição que tenha uma peça!\n");
+                        }
+
+                        controle = 0;
                     break;
 
-                    case "S":
+                    case 2:
                         teste = personagens.get(0).getPosX();
 
                         if(teste <= 1 || teste >= 8){
@@ -209,13 +197,6 @@ public class Main {
                             personagens.get(0).setPosX(1);
                     break;
 
-                    case "A":
-                        pos2[0]--;
-                    break;
-
-                    case "D":
-                        pos2[0]++;
-                    break;
 
                     default:
                     break;
@@ -223,13 +204,7 @@ public class Main {
 
                 }
 
-
-                if(opcao.equals("5")){
-                    aux = 5;
-                }
-
-
-            }while(aux != 5);
+            }while(opcao != 3);
     }
 
 

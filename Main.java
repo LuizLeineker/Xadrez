@@ -3,20 +3,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main{
-
+    // COLORS
     public static final String ANSI_BLACK =  "\u001B[30m";
-
     public static final String ANSI_YELLOW =  "\u001B[33m";
-
     public static final String ANSI_CYAN =  "\u001B[36m";
-
     public static final String ANSI_RESET =  "\u001B[0m";
-
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-
     public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
-
+    //
+    static void clear(){
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    }
+    // PEÇAS
     static void inicio(List<Xadrez> personagens){
+        // Criando as peças iniciais, é possivel alterar a posição se desejar
 
         //peças cyan
         personagens.add(new Cyan(5, 6, "♖", "Cyan", "T"));
@@ -58,7 +60,16 @@ public class Main{
         personagens.add(new Gold(7, 8, "♟", "Gold", "P"));
 
     }
+    static void start(){
+        System.out.printf("[1] - Play\n");
+        System.out.printf("[2] - Exit\n");
+        System.out.printf("--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n");
+        System.out.print( "     ♔ ♕ ♖ ♗ ♘ ♙ : ♚ ♛  ♜  ♝  ♞ ♟\n");
+        System.out.printf("--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n");
+        System.out.print( "Informe um numero de acordo com as opçoes: ");
+    }
 
+    // PRINT TABULEIRO
     static void tabuleiro(int linhas, int colunas, List<Xadrez> pers){
         boolean personagem;
         int color = 0;
@@ -108,42 +119,9 @@ public class Main{
 
 
             }
-
-
-
-
-
-             /*   for (int j = 0; j < 32; j++){           //PRINTA NO LADO DIREITO  AS PEÇAS COMIDAS (tiltei, queria colocar as peças no lado, 4 em cada fila, mais é muito trabalho
-                    if(pers.get(j).getTipo().equals("X")){
-                        System.out.print(" " + pers.get(j).toString());
-                        pers.get(j).setTipo("D");
-                        aux2++;
-                    }
-                    if(aux2 >= 4){
-                        break;
-                    }
-
-                }
-
-            for (int j = 0; j < 32; j++){           //PRINTA NO LADO DIREITO  AS PEÇAS COMIDAS (tiltei, queria colocar as peças no lado, 4 em cada fila, mais é muito trabalho
-                if(pers.get(j).getTipo().equals("X") && aux > 3){
-                    System.out.print(" " + pers.get(j).toString());
-                    pers.get(j).setTipo("D");
-                }
-            }  */
-
-
             colorx++;
             System.out.printf("\n");
         }
-
-       /* for(int i = 0; i < pers.size(); i++) {          //DEVOLVE TIPO AS PEÇAS COMIDAS! (tiltei, queria colocar as peças no lado, 4 em cada fila, mais é muito trabalho
-            if(pers.get(i).getTipo().equals("D")){
-                pers.get(i).setTipo("X");
-            }
-        }    */
-
-
 
         System.out.printf("    %d     %d    %d     %d     %d    %d     %d    %d  ", 1, 2, 3, 4, 5, 6, 7, 8);
 
@@ -155,7 +133,6 @@ public class Main{
                 break;
             }
         }
-
 
         for (int i = 0; i < pers.size() ; i++) {     //printa as peças comida EMBAIXO
             if(pers.get(i).getTipo().equals("X")){
@@ -169,11 +146,10 @@ public class Main{
             }
         }
 
-
         System.out.printf("\n--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n");
-
     }
 
+    // FINAL DE JOGO
     static void end(String win){
         if(win.equals("GOLD")){
             System.out.print("\n\n\n\n\n#################### XADREZ ###################\n");
@@ -189,6 +165,7 @@ public class Main{
         }
     }
 
+    //MOV DO TIME GOLD
     static int movimentoGold(int posy, int posx, int indice, List<Xadrez> personagens){
         Scanner leitor = new Scanner(System.in);
         int max;
@@ -207,7 +184,7 @@ public class Main{
 
         switch(personagens.get(indice).getTipo()){
             case "REI":
-                System.out.print("MIOJO");
+                System.out.print("REI");
                 return 1;
 
 
@@ -425,7 +402,7 @@ public class Main{
                             return 1;
                         }
                     }
-                }  //durante esse for tem 2 verificaçoes pois o peao pode comer tanto para a direita da diagonal quanto para esquerda.
+                }  //2 verificaçoes no for, o peao pode comer tanto para a direita da diagonal quanto para esquerda.
 
 
 
@@ -459,6 +436,7 @@ public class Main{
 
     }
 
+    //MOV DO TIME CYAN
     static int movimentoCyan(int posy, int posx, int indice, List<Xadrez> personagens){
         Scanner leitor = new Scanner(System.in);
         int pos1, pos2;
@@ -476,7 +454,7 @@ public class Main{
 
         switch(personagens.get(indice).getTipo()){
             case "REI":
-                System.out.print("MIOJO");
+                System.out.print("REI");
                 return 1;
 
 
@@ -687,7 +665,7 @@ public class Main{
                             return 1;
                         }
                     }
-                }  //durante esse for tem 2 verificaçoes pois o peao pode comer tanto para a direita da diagonal quanto para esquerda.
+                }
 
 
 
@@ -720,7 +698,7 @@ public class Main{
         }
     }
 
-
+    // MAIN
     public static void main(String[] args){
             List<Xadrez> personagens = new ArrayList<Xadrez>();
             Scanner leitor = new Scanner(System.in);
@@ -733,14 +711,25 @@ public class Main{
             int retorno = 0;
             inicio(personagens);
 
+            start();
+            opcao = Integer.parseInt(leitor.nextLine());
+
+            if(opcao != 1){
+                System.out.printf("NEM COMEÇOU E JÁ SAIU???");
+                return;
+            }
+            clear();
+            System.out.printf("\nAVISO: O jogo está em fase de desenvolvimento, apenas a torre e o peão funciona.");
+            System.out.printf("\nO jogo é de rodada, o primeiro a começar será o time Gold.");
+            System.out.printf("\nQuando o jogo iniciar escolha uma peça para movimentar.");
+            System.out.printf("\nDepois de selecioanar sua peça escolha uma casa para andar.");
+            System.out.printf("\nO sistema de movimetação funciona com base em cordenadas, X & Y");
+            System.out.printf("\nLembre dos conceitos do Xadrez, se o movimento for invalido não vai funcionar!");
+            System.out.printf("\nO jogo acaba quando o Rei morrer.");
+            System.out.printf("\nBoa Sorte!\n\n");
             do{
                 tabuleiro(8, 8, personagens);
-                System.out.printf("[1] - Play\n");
-                System.out.printf("[2] - Exit\n");
-                System.out.printf("--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n");
-                System.out.print( "     ♔ ♕ ♖ ♗ ♘ ♙ : ♚ ♛  ♜  ♝  ♞ ♟\n");
-                System.out.printf("--~--~--~--~--~--~--~--~--~--~--~--~--~--~--~--\n");
-                System.out.print( "Informe um numero de acordo com as opçoes: ");
+                start();
                 opcao = Integer.parseInt(leitor.nextLine());
 
 
@@ -748,10 +737,10 @@ public class Main{
 
                     case 1:
                         if( turno % 2 == 0){
-                            System.out.printf("\nDourado, escolha um cordenada para selecionar a peça que deseja mexer...");
+                            System.out.printf("\nDourado, escolha uma cordenada para selecionar a peça que deseja mexer...");
                         }
                         else{
-                            System.out.printf("\nCiano, escolha um cordenada para selecionar a peça que deseja mexer...");
+                            System.out.printf("\nCiano, escolha uma cordenada para selecionar a peça que deseja mexer...");
                         }
 
 
@@ -824,8 +813,12 @@ public class Main{
                         if(controle != 1){
                             System.out.printf("\nInforme uma posição que tenha uma peça!\n");
                         }
-
                         controle = 0;
+                    break;
+
+                    case 2:
+
+
                     break;
 
 
@@ -836,6 +829,7 @@ public class Main{
                 }
 
             }while(opcao != 2);
+            System.out.printf("Obrigado por jogar!");
     }
 
 
